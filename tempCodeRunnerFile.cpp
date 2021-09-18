@@ -1,51 +1,21 @@
-#include <stdio.h>
 #include <iostream>
+#include <stdio.h>
 using namespace std;
-void display(int *array,int n);
-
 int main()
 {
-    int n, l, q, temp, j,lCopy=0;
-    cin >> n >> l >> q;
-    j = n - 1;
-    
-    int array[n], queryArray[q];
-    for (int i = 0; i < n; i++)
-    {
-        cin >> array[i];
-    }
+    int d, m, y, d1, m1, y1;
+    cin >> d >> m >> y >> d1 >> m1 >> y1;
+    int dFine = 0, mFine = 0, yFine = 0;
 
-    for (int i = 0; i < q; i++)
-    {
-        cin >> queryArray[i];
-    }
+    if (d - d1 > 0)
+        dFine = d - d1;
 
-    for (int i = 0; lCopy < l; lCopy++)
-    {
-        
-        temp = array[i];
-        array[i] = array[j];
-        for (int k = n - 1; k >= 2; k--)
-        {
-            array[k] = array[k - 1];
-        }
-        array[i + 1] = temp;
+    if (m - m1 > 0)
+        mFine = m - m1;
 
-        display(array,n);
-    }
+    if (y - y1 > 0)
+        yFine = y - y1;
 
-    cout << "query" << endl;
-
-    for (int i = 0; i < q; i++)
-    {
-        cout << array[queryArray[i]];
-    }
-}
-
-void display(int *array,int n){
-    cout<<endl<<"displaying"<<endl;
-    for (int i = 0; i < n; i++)
-    {
-        cout << array[i];
-    }
+    int totalFine = (15 * dFine) + (500 * mFine) + (10000 * yFine);
+    cout<<totalFine;
 }
